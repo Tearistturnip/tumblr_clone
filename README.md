@@ -32,7 +32,7 @@ Here's a walkthrough of implemented user stories:
 
 https://imgur.com/a/OXxjH
 
-<img src='https://i.imgur.com/a/OXxjH.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://i.imgur.com/OXxjH.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
