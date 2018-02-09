@@ -86,6 +86,7 @@ class PhotosViewControllerTableViewController: UIViewController, UITableViewData
             let photo = photos[0]
             let originalSize = photo["original_size"] as! [String:Any]
             vc.urlString = originalSize["url"] as? String
+            vc.content = post["caption"] as? String
         }
         
     }

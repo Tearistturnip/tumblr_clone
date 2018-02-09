@@ -1,52 +1,46 @@
 //
-//  PhotoDetailsViewController.swift
+//  ZoomViewController.swift
 //  tumblr_clone
 //
-//  Created by Justin Lee on 2/7/18.
+//  Created by Michelle Caplin on 2/8/18.
 //  Copyright © 2018 Justin Lee. All rights reserved.
 //
 
 import UIKit
 
-class PhotoDetailsViewController: UIViewController {
-    
-    @IBOutlet weak var photo_imageView: UIImageView!
-    
-    @IBOutlet weak var contentLabel: UILabel!
+class ZoomViewController: UIViewController, UIScrollViewDelegate {
     
     var urlString: String?
-    var content: String?
 
+    
+    
+    @IBOutlet weak var scrollView: UIScrollView!
+    
+    @IBOutlet weak var imageView: UIImageView!
+    
+    @IBAction func close(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        let url = URL(string: urlString!)
-        photo_imageView.af_setImage(withURL: url!)
-        let content = self.content?.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
-        print(content ?? "no content")
-        contentLabel.text = content
         
+        let url = URL(string: urlString!)
+        imageView.af_setImage(withURL: url!)
+        
+        scrollView.delegate = self
+        scrollView.contentSize = imageView.image!.size
 
         // Do any additional setup after loading the view.
     }
-    
-    @IBAction func didTap(_ sender: Any) {
-        performSegue(withIdentifier: "modal", sender: nil)
-        
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return imageView
     }
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let vc = segue.destination as! ZoomViewController
-        vc.urlString = urlString! as String
-        
-        
-    }
-    
-
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     
 
     /*
